@@ -8,14 +8,14 @@ class EditComponent extends Component {
     const newMessage = this.getMessage.value;
     const data = {
       newTitle,
-      newMessage
+      newMessage,
     }
     this.props.dispatch({ type: 'UPDATE', id: this.props.post.id, data: data })
   }
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleEdit}>
+      <div key={this.props.post.id} className='post'>
+        <form className='form' onSubmit={this.handleEdit}>
           <input required type="text" ref={(input) => this.getTitle = input}
           defaultValue={this.props.post.title} placeholder="Enter Post Title" /><br /><br />
           <textarea required rows="5" ref={(input) => this.getMessage = input}
